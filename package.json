@@ -4,6 +4,8 @@
   "private": true,
   "author": "Ntthuat <nguyenthienthuat92@gmail.com>",
   "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
     "react": "16.7.0",
     "react-dom": "16.7.0",
     "react-redux": "6.0.0",
