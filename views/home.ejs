@@ -3,8 +3,14 @@
 <head>
     <meta charset="utf-8">
     <title>Demo ReactJs Ntthuat</title>
+    <script crossorigin src="lib/react.development.js"></script>
+    <script crossorigin src="lib/react-dom.development.js"></script>
+    <script crossorigin src="lib/browser.min.js"></script>
 </head>
 <body>
-    Hello
+    <div id="root"></div>
+    <script type="text/babel">
+        ReactDOM.render(<h1>Thuat Nguyen</h1> , document.getElementById("root"));
+    </script>
 </body>
 </html>
