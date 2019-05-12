@@ -1,4 +1,11 @@
+function getName(name) {
+  alert(name);
+}
+
 class ThuatNguyen extends React.Component {
+  callGetname() {
+    getName(this.props.teacher);
+  }
   getInfo() {
     alert(this.props.children);
   }
@@ -10,6 +17,14 @@ class ThuatNguyen extends React.Component {
         </h1>
         <p>{this.props.children}</p>
         <button onClick={this.getInfo.bind(this)}>Information</button>
+        <button
+          onClick={() => {
+            var str = this.props.name + "'s teacher is " + this.props.teacher;
+            getName(str);
+          }}
+        >
+          Information2
+        </button>
         <ThuatNguyen2 />
       </div>
     );
