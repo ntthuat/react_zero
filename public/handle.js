@@ -6,7 +6,7 @@ class ThuatNguyen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      totalStudents: 10,
+      totalStudents: this.props.totalStudents,
       date: new Date()
     };
   }
@@ -20,9 +20,8 @@ class ThuatNguyen extends React.Component {
   }
 
   addStudents() {
-    this.setState({
-      totalStudents: ++this.state.totalStudents
-    });
+    this.state.totalStudents = parseInt(this.state.totalStudents) + 1;
+    this.setState(this.state);
   }
 
   render() {
@@ -57,10 +56,10 @@ class ThuatNguyen2 extends React.Component {
 
 ReactDOM.render(
   <div>
-    <ThuatNguyen name="ReactJS" teacher="Mr.Khoa">
+    <ThuatNguyen name="ReactJS" teacher="Mr.Khoa" totalStudents="10">
       React Subject
     </ThuatNguyen>
-    <ThuatNguyen name="NodeJS" teacher="Mr.Phu">
+    <ThuatNguyen name="NodeJS" teacher="Mr.Phu" totalStudents="20">
       Node Subject
     </ThuatNguyen>
   </div>,
