@@ -22,7 +22,7 @@ class Image extends React.Component {
   }
 
   componentDidMount() {
-    setInterval(this.changeImg.bind(this), 1000);
+    setInterval(this.changeImg.bind(this), 10000);
   }
 }
 
