@@ -20,7 +20,9 @@ class ThuatNguyen extends React.Component {
   }
 
   addStudents() {
-    this.state.totalStudents++;
+    this.setState({
+      totalStudents: ++this.state.totalStudents
+    });
   }
 
   render() {
