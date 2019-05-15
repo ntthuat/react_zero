@@ -15,7 +15,7 @@ class List6 extends React.Component {
     super(props);
     list = this;
     this.state = {
-      array: ["Hi", "Hello", "KhoaPham"]
+      array: []
     };
   }
 
@@ -30,6 +30,15 @@ class List6 extends React.Component {
       </div>
     );
   }
+
+  componentDidMount() {
+    var that = this;
+    $.post("/getNotes", function(data) {
+      that.setState({
+        array: data
+      });
+    });
+  }
 }
 
 class InputDiv extends React.Component {
@@ -37,6 +46,8 @@ class InputDiv extends React.Component {
     list.setState({
       array: list.state.array.concat(this.refs.txt.value)
     });
+
+    ReactDOM.unmountComponentAtNode(document.getElementById("div-add"));
   }
 
   render() {
