@@ -24,3 +24,9 @@ app.post("/add", parser, function(req, res) {
   array.push(newNote);
   res.send(array);
 });
+
+app.post("/delete", parser, function(req, res) {
+  var id = req.body.idDelete;
+  array.splice(id, 1);
+  res.send(array);
+});

@@ -1,8 +1,21 @@
 var list;
 
 class Note6 extends React.Component {
+  delete() {
+    $.post("/delete", { idDelete: this.props.id }, function(data) {
+      list.setState({
+        array: data
+      });
+    });
+  }
+
   render() {
-    return <div className="div-note6">{this.props.children}</div>;
+    return (
+      <div className="div-note6">
+        <p>{this.props.children}</p>
+        <button onClick={this.delete.bind(this)}> Delete </button>
+      </div>
+    );
   }
 }
 
@@ -25,7 +38,11 @@ class List6 extends React.Component {
         <div id="div-add" />
         <button onClick={addDiv}> Add</button>
         {this.state.array.map(function(note, index) {
-          return <Note6 key={index}>{note}</Note6>;
+          return (
+            <Note6 key={index} id={index}>
+              {note}
+            </Note6>
+          );
         })}
       </div>
     );
