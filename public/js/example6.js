@@ -1,6 +1,19 @@
 var list;
 
 class Note6 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      onEdit: false
+    };
+  }
+
+  edit() {
+    this.setState({
+      onEdit: true
+    });
+  }
+
   delete() {
     $.post("/delete", { idDelete: this.props.id }, function(data) {
       list.setState({
@@ -9,13 +22,28 @@ class Note6 extends React.Component {
     });
   }
 
+  save() {}
+
+  cancel() {}
+
   render() {
-    return (
-      <div className="div-note6">
-        <p>{this.props.children}</p>
-        <button onClick={this.delete.bind(this)}> Delete </button>
-      </div>
-    );
+    if (this.state.onEdit) {
+      return (
+        <div className="div-note6">
+          <input defaultValue={this.props.children} />
+          <button onClick={this.save.bind(this)}> Save</button>
+          <button onClick={this.cancel.bind(this)}> Cancel</button>
+        </div>
+      );
+    } else {
+      return (
+        <div className="div-note6">
+          <p>{this.props.children}</p>
+          <button onClick={this.delete.bind(this)}> Delete</button>
+          <button onClick={this.edit.bind(this)}> Edit</button>
+        </div>
+      );
+    }
   }
 }
 
