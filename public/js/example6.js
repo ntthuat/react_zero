@@ -22,15 +22,33 @@ class Note6 extends React.Component {
     });
   }
 
-  save() {}
+  save() {
+    var note = this;
+    $.post(
+      "/update",
+      { idUpdate: this.props.id, content: this.refs.txt.value },
+      function(data) {
+        list.setState({
+          array: data
+        });
+        note.setState({
+          onEdit: false
+        });
+      }
+    );
+  }
 
-  cancel() {}
+  cancel() {
+    this.setState({
+      onEdit: false
+    });
+  }
 
   render() {
     if (this.state.onEdit) {
       return (
         <div className="div-note6">
-          <input defaultValue={this.props.children} />
+          <input defaultValue={this.props.children} ref="txt" />
           <button onClick={this.save.bind(this)}> Save</button>
           <button onClick={this.cancel.bind(this)}> Cancel</button>
         </div>

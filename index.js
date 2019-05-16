@@ -26,7 +26,13 @@ app.post("/add", parser, function(req, res) {
 });
 
 app.post("/delete", parser, function(req, res) {
-  var id = req.body.idDelete;
+  const id = req.body.idDelete;
   array.splice(id, 1);
+  res.send(array);
+});
+
+app.post("/update", parser, function(req, res) {
+  const id = req.body.idUpdate;
+  array[id] = req.body.content;
   res.send(array);
 });
