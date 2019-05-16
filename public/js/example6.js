@@ -43,8 +43,10 @@ class List6 extends React.Component {
 
 class InputDiv extends React.Component {
   send() {
-    list.setState({
-      array: list.state.array.concat(this.refs.txt.value)
+    $.post("/add", { note: this.refs.txt.value }, function(data) {
+      list.setState({
+        array: data
+      });
     });
 
     ReactDOM.unmountComponentAtNode(document.getElementById("div-add"));
